@@ -1,0 +1,56 @@
+---
+title: "Project"
+author: "Pedro Balderas"
+date: "14/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1.- Crea un vector numérico que contenga los meses de un año. Luego, crea otro vector que contenga el nombre de cada mes. Más tarde, debe asignar los meses y nombres. Finalmente, debe seleccionar y mostrar los meses relacionados con la temporada de verano (junio, julio, agosto)
+
+  mes_num <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+  mes<- c("Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
+  names(mes_num) <- mes
+  mes_num
+  mes_num[6:8]
+
+
+## 2.- Construye una matriz con 5 filas que contengan los números del 1 al 15, rellenados por filas.
+matrix(1:15, byrow=TRUE, nrow=5)
+
+## 3.- -Crear un factor con estas observaciones "XXL", "XXL", "XXL", "XL", "L", "M", "M", "S", "S", "S" e imprimir un resumen
+num_vector <- c("XXL","XXL","XXL","XL","L","M","M","S","S","S")
+num_vector <- factor(num_vector)
+print(num_vector) 
+
+
+## 4.- Crea e imprime un marco de datos que debe contener: 5 de sus cursos (por ejemplo, Fundamentos de Programación, Programación Orientada a Objetos, Bases de Datos, etc.). 5 de tus marcas 5 nombres de tus profesores
+
+cursos_vector <- c("Topicos Selector", "Innovacion tecnologica", "Estructura de", "Sistemas Web", "Metodos formales")
+
+calificacion <- c("7","9","9","8.2","8.9")
+
+prof_vector <- c("Alan Ponce", "Abraham Lopez", "Rogelio Florencia", "Maritza Alvarez", "Vicente Garcia")
+
+dataframe <- data.frame(cursos_vector, calificacion, prof_vector) 
+print(dataframe)
+
+## 5.-Cargue el conjunto de datos etiquetado como ITU_WB.csv que se encuentra en la carpeta de datos y almacene este conjunto de datos en una variable llamada itu . Luego, debes describir la composición del conjunto de datos. Esta descripción debe contener el número de observaciones, variables y el tipo de cada variable.
+
+## RESPUESTA 5 : el dataset se compone de 3735 filas que constan de diferentes columnas que competen valores enteros, caracteres, y valores null (NAs)
+
+## 6.- Filtrar el conjunto de datos itu para recuperar solo la observación de México, agrupados por año y en orden descendente seleccionando la columna "Valor de Internet"
+var = select(itu, subset = Economy == "Mexico") %<% unlist
+print(var)
+
+## 7.- Cree una nueva variable llamada itu_by_year grouping por "año" y "grupo de ingresos". Luego, retire las observaciones de NA. Más adelante, utilizando la función resumen (), debe estimar la mediana de la Internet valuevariable y almacenarla en una variable llamada "valor mediano"
+
+itu_by_year = select(itu, year, income group) %<% unlist
+na.omit(itu_by_year)
+valor_mediano = itu_by_year
+mean(valor_mediano)
+
+
